@@ -40,12 +40,28 @@ const projects = [
     className: "md:col-span-1 md:row-span-1 bg-orange-500/10 border-orange-500/20",
   },
   {
+    title: "IIITS Foodies",
+    description: "Campus-wide food ordering system reducing wait times. Modern tech stack for high-concurrency.",
+    icon: <Globe className="w-6 h-6" />,
+    tags: ["FullStack", "React", "Node.js"],
+    github: "https://github.com/saurabhkumar1432/IIITS_Foodies",
+    className: "md:col-span-1 md:row-span-1 bg-yellow-500/10 border-yellow-500/20",
+  },
+  {
+    title: "CGPA Calculator",
+    description: "Aesthetic, user-centric calculator for engineering students to track academic progress.",
+    icon: <Code className="w-6 h-6" />,
+    tags: ["React", "Glassmorphism"],
+    github: "https://github.com/saurabhkumar1432/CGPA-Calculator",
+    className: "md:col-span-1 md:row-span-1 bg-cyan-500/10 border-cyan-500/20",
+  },
+  {
     title: "Space Trapped",
     description: "High-octane survival game exploring physics and collision logic.",
     icon: <Zap className="w-6 h-6" />,
     tags: ["Python", "Pygame"],
     github: "https://github.com/saurabhkumar1432/bird-trapped-in-space-game",
-    className: "md:col-span-2 md:row-span-1 bg-rose-500/10 border-rose-500/20",
+    className: "md:col-span-1 md:row-span-1 bg-rose-500/10 border-rose-500/20",
   }
 ];
 
