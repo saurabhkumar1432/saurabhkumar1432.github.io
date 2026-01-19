@@ -7,7 +7,7 @@ import { Points, PointMaterial, Float } from '@react-three/drei';
 import * as random from 'maath/random/dist/maath-random.esm';
 
 function StarField(props: any) {
-  const ref = useRef<any>();
+  const ref = useRef<any>(null);
   const [sphere] = useState(() => {
     // Check for mobile to reduce particle count
     const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
