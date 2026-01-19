@@ -17,7 +17,7 @@ interface Project {
 }
 
 interface ProjectModalProps {
-  project: Project;
+  project: Project | null;
   isOpen: boolean;
   onClose: () => void;
 }
@@ -25,7 +25,6 @@ interface ProjectModalProps {
 export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
   const modalRef = useRef(null);
   const overlayRef = useRef(null);
-  const contentRef = useRef(null);
 
   useGSAP(() => {
     if (isOpen) {
@@ -76,7 +75,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
     });
   };
 
-  if (!isOpen) return null;
+  if (!isOpen || !project) return null;
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8">

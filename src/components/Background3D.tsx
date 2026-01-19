@@ -2,8 +2,8 @@
 
 import { useState, useRef, Suspense } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Points, PointMaterial, Float } from '@react-three/drei';
-// @ts-ignore
+import { Points, PointMaterial } from '@react-three/drei';
+// @ts-expect-error Maath types are missing in some versions
 import * as random from 'maath/random/dist/maath-random.esm';
 
 function StarField(props: any) {
@@ -46,21 +46,6 @@ function StarField(props: any) {
       </Points>
     </group>
   );
-}
-
-function FloatingShapes() {
-    return (
-        <Float speed={2} rotationIntensity={1} floatIntensity={2}>
-             <mesh position={[1, -0.5, 0]} scale={0.2}>
-                <torusKnotGeometry args={[1, 0.3, 128, 16]} />
-                <meshStandardMaterial color="#88c0d0" wireframe />
-            </mesh>
-            <mesh position={[-1, 0.5, 0]} scale={0.15}>
-                <icosahedronGeometry />
-                <meshStandardMaterial color="#bf616a" wireframe />
-            </mesh>
-        </Float>
-    )
 }
 
 export function Background3D() {

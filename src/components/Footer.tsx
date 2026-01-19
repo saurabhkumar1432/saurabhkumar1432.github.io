@@ -33,10 +33,10 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 relative z-10">
         <div>
           <h2 className="text-4xl md:text-8xl font-black tracking-tighter mb-8 bg-clip-text text-transparent bg-gradient-to-br from-white via-white/80 to-white/40">
-            LET'S <br />WORK TOGETHER
+            LET&apos;S <br />WORK TOGETHER
           </h2>
           <p className="text-muted-foreground text-xl mb-12 max-w-sm leading-relaxed">
-            Building the next generation of digital experiences? I'm ready to join your team.
+            Building the next generation of digital experiences? I&apos;m ready to join your team.
           </p>
           
           <a 

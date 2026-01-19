@@ -1,11 +1,10 @@
 'use client';
 
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
-import { Github, Code, Smartphone, Zap, Bot, Globe, ArrowRight } from 'lucide-react';
-import { cn } from '@/lib/utils';
+import { Code, Smartphone, Zap, Bot, Globe, ArrowRight } from 'lucide-react';
 import { ProjectModal } from '@/components/ProjectModal';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -156,7 +155,7 @@ export function ProjectGrid() {
       </div>
 
       <ProjectModal 
-        project={activeProject as any} 
+        project={activeProject} 
         isOpen={!!activeProject} 
         onClose={() => setActiveProject(null)} 
       />

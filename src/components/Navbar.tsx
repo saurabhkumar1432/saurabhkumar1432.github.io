@@ -1,10 +1,9 @@
 'use client';
 
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { Github, Linkedin, Mail, Menu, X } from 'lucide-react';
-import Link from 'next/link';
 
 const navLinks = [
   { name: 'Projects', href: '#projects' },

@@ -90,7 +90,7 @@ export function Hero() {
             <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
           </span>
           <span className="text-sm font-medium tracking-wider text-emerald-500 uppercase">
-             SDE @ IBM ISL | IIITS'24
+             SDE @ IBM ISL | IIITS&apos;24
           </span>
         </div>
 

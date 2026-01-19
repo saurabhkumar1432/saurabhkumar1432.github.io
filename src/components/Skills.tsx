@@ -21,13 +21,13 @@ export function Skills() {
 
   useGSAP(() => {
     // Scroll Velocity Skew Effect
-    let proxy = { skew: 0 },
-        skewSetter = gsap.quickSetter(".skill-item", "skewX", "deg"),
-        clamp = gsap.utils.clamp(-20, 20);
+    const proxy = { skew: 0 };
+    const skewSetter = gsap.quickSetter(".skill-item", "skewX", "deg");
+    const clamp = gsap.utils.clamp(-20, 20);
 
     ScrollTrigger.create({
       onUpdate: (self) => {
-        let skew = clamp(self.getVelocity() / -300);
+        const skew = clamp(self.getVelocity() / -300);
         if (Math.abs(skew) > Math.abs(proxy.skew)) {
           proxy.skew = skew;
           gsap.to(proxy, {
