@@ -52,16 +52,22 @@ export function CustomCursor() {
       setIsHovering(!!isInteractive);
       setCursorText(text || '');
 
+      // Logic to handle interactive elements vs specifically labeled elements
       if (isInteractive || text) {
         gsap.to(cursor, { scale: 0.5, duration: 0.2 }); // Shrink main dot slightly
+      } else {
+        gsap.to(cursor, { scale: 1, duration: 0.2 });
+      }
+
+      // Only show text label if explicit text exists
+      if (text) {
         gsap.to(follower, { 
-          scale: 1, // Keep scale distinct from text
+          scale: 1, 
           opacity: 1,
           duration: 0.3
         });
       } else {
-        gsap.to(cursor, { scale: 1, duration: 0.2 });
-        gsap.to(follower, { 
+         gsap.to(follower, { 
           scale: 0, 
           opacity: 0,
           duration: 0.3 
@@ -104,7 +110,7 @@ export function CustomCursor() {
         className="fixed top-0 left-0 px-3 py-1 bg-white text-black text-[10px] font-bold uppercase tracking-widest rounded-full pointer-events-none z-[9999] hidden md:flex items-center justify-center opacity-0 whitespace-nowrap shadow-xl transform translate-x-4 translate-y-4"
       >
          <span ref={cursorTextRef}>
-            {cursorText || 'View'}
+            {cursorText}
          </span>
       </div>
     </>
