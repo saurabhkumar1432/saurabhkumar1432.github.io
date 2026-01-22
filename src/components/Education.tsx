@@ -5,6 +5,8 @@ import { GraduationCap, BookOpen } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
+import { MagneticElement } from '@/components/MagneticElement';
+import { TextReveal } from '@/components/TextReveal';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -30,22 +32,31 @@ export function Education() {
     <section ref={container} className="py-20 relative px-6" id="education">
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col md:flex-row gap-12 items-start">
-          
+
           <div className="md:w-1/3">
-             <h2 className="text-4xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">
-               Education
-             </h2>
+             <TextReveal
+               text="Education"
+               className="text-4xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400"
+               duration={0.8}
+               stagger={0.1}
+             />
              <p className="text-muted-foreground text-lg">
                The academic foundation that drives my technical excellence.
              </p>
           </div>
 
           <div className="md:w-2/3 space-y-6">
-            <div className="edu-card group relative overflow-hidden bg-white/5 border border-white/10 p-8 rounded-3xl hover:bg-white/10 transition-colors">
+            <MagneticElement
+              strength={0.1}
+              duration={0.4}
+              returnEase="power2.out"
+              className="edu-card group relative overflow-hidden bg-white/5 border border-white/10 p-8 rounded-3xl hover:bg-white/10 transition-colors"
+              tagName="div"
+            >
               <div className="absolute top-0 right-0 p-4 opacity-50 group-hover:opacity-100 transition-opacity">
                 <GraduationCap className="w-24 h-24 text-white/5 -rotate-12" />
               </div>
-              
+
               <div className="relative z-10">
                 <div className="flex items-center gap-4 mb-4">
                   <div className="p-3 rounded-full bg-emerald-500/20 text-emerald-400">
@@ -61,9 +72,15 @@ export function Education() {
                   Specialization: Data Security & Performance
                 </div>
               </div>
-            </div>
+            </MagneticElement>
 
-            <div className="edu-card group relative overflow-hidden bg-white/5 border border-white/10 p-8 rounded-3xl hover:bg-white/10 transition-colors">
+            <MagneticElement
+              strength={0.1}
+              duration={0.4}
+              returnEase="power2.out"
+              className="edu-card group relative overflow-hidden bg-white/5 border border-white/10 p-8 rounded-3xl hover:bg-white/10 transition-colors"
+              tagName="div"
+            >
                <div className="absolute top-0 right-0 p-4 opacity-50 group-hover:opacity-100 transition-opacity">
                 <BookOpen className="w-24 h-24 text-white/5 -rotate-12" />
               </div>
@@ -80,7 +97,7 @@ export function Education() {
                 </div>
                 <p className="text-sm text-gray-400">2008 - 2019</p>
               </div>
-            </div>
+            </MagneticElement>
           </div>
         </div>
       </div>

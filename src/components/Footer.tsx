@@ -4,27 +4,12 @@ import { useRef } from 'react';
 import { Mail, Github, Linkedin, ArrowUpRight } from 'lucide-react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
+import { MagneticElement } from '@/components/MagneticElement';
 
 export function Footer() {
   const container = useRef(null);
 
-  useGSAP(() => {
-    // Magnetic Button Effect for Footer CTA
-    const button = document.querySelector('.cta-btn') as HTMLElement;
-    if (button) {
-      button.addEventListener('mousemove', (e) => {
-        const rect = button.getBoundingClientRect();
-        const x = e.clientX - rect.left - rect.width / 2;
-        const y = e.clientY - rect.top - rect.height / 2;
-        gsap.to(button, { x: x * 0.3, y: y * 0.3, duration: 0.3, ease: 'power2.out' });
-        gsap.to(button.querySelector('.btn-text'), { x: x * 0.1, y: y * 0.1, duration: 0.3 });
-      });
-      button.addEventListener('mouseleave', () => {
-        gsap.to(button, { x: 0, y: 0, duration: 0.5, ease: 'elastic.out(1, 0.4)' });
-        gsap.to(button.querySelector('.btn-text'), { x: 0, y: 0, duration: 0.5 });
-      });
-    }
-  }, { scope: container });
+
 
   return (
     <footer ref={container} className="py-20 border-t border-white/5 relative overflow-hidden" id="contact">
@@ -36,19 +21,23 @@ export function Footer() {
             LET&apos;S <br />WORK TOGETHER
           </h2>
           <p className="text-muted-foreground text-xl mb-12 max-w-sm leading-relaxed">
-            Building the next generation of digital experiences? I&apos;m ready to join your team.
+            Building next generation of digital experiences? I&apos;m ready to join your team.
           </p>
-          
-          <a 
+
+          <MagneticElement
             href="mailto:saurabhkumar1432001@gmail.com"
-            className="cta-btn group inline-flex items-center justify-center w-full md:w-auto px-10 py-6 bg-white text-black rounded-full font-bold text-lg hover:bg-gray-100 transition-colors shadow-[0_0_50px_rgba(255,255,255,0.2)]"
+            strength={0.3}
+            contentStrength={0.1}
+            duration={0.3}
+            className="group inline-flex items-center justify-center w-full md:w-auto px-10 py-6 bg-white text-black rounded-full font-bold text-lg hover:bg-gray-100 transition-colors shadow-[0_0_50px_rgba(255,255,255,0.2)] no-underline"
+            tagName="a"
             data-cursor-text="Say Hello"
           >
-            <span className="btn-text flex items-center gap-3">
+            <span className="flex items-center gap-3">
               saurabhkumar1432001@gmail.com
               <ArrowUpRight className="w-6 h-6 group-hover:rotate-45 transition-transform duration-300" />
             </span>
-          </a>
+          </MagneticElement>
         </div>
         
         <div className="flex flex-col justify-end md:items-end gap-12">
@@ -58,14 +47,17 @@ export function Footer() {
                 { name: "Linkedin", url: "https://www.linkedin.com/in/saurabhkumar14" },
                 { name: "Twitter", url: "#" }
             ].map((link) => (
-                <a 
-                    key={link.name} 
-                    href={link.url} 
-                    target="_blank" 
-                    className="relative px-6 py-3 rounded-full border border-white/10 hover:bg-white/10 transition-colors text-sm font-medium uppercase tracking-wider"
+                <MagneticElement
+                    key={link.name}
+                    href={link.url}
+                    target="_blank"
+                    strength={0.2}
+                    duration={0.3}
+                    className="relative px-6 py-3 rounded-full border border-white/10 hover:bg-white/10 transition-colors text-sm font-medium uppercase tracking-wider no-underline"
+                    tagName="a"
                 >
                     {link.name}
-                </a>
+                </MagneticElement>
             ))}
           </div>
           <p className="text-muted-foreground text-sm flex items-center gap-2">

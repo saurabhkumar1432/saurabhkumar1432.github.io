@@ -4,6 +4,8 @@ import { useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
+import { TextReveal } from '@/components/TextReveal';
+import { FloatingElements } from '@/components/FloatingElements';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -60,13 +62,20 @@ export function Skills() {
 
   return (
     <section ref={container} className="py-32 overflow-hidden bg-black relative" id="skills">
+      <FloatingElements count={12} colors={['#06b6d4', '#0891b2', '#22d3ee']} />
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-900/5 to-transparent blur-3xl opacity-30 pointer-events-none" />
       
       <div className="max-w-7xl mx-auto px-6 mb-20 text-center relative z-10">
-        <h2 className="text-sm uppercase tracking-[0.2em] text-white/40 mb-8">Technical Proficiency</h2>
+        <TextReveal
+          text="Technical Proficiency"
+          className="text-sm uppercase tracking-[0.2em] text-white/40 mb-8"
+          duration={0.8}
+          stagger={0.08}
+          as="h2"
+        />
         <p className="skill-text text-2xl md:text-3xl font-light leading-relaxed text-white/80 max-w-3xl mx-auto">
-          Scale-ready architecture. <span className="text-white font-medium italic">Polyglot engineering</span>. 
-          Building the future with <span className="underline decoration-blue-500 underline-offset-4 decoration-2">precision</span>.
+          Scale-ready architecture. <span className="text-white font-medium italic">Polyglot engineering</span>.
+          Building the future with <span className="text-white">precision</span>.
         </p>
       </div>
 

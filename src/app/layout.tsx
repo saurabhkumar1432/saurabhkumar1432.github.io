@@ -4,6 +4,8 @@ import "./globals.css";
 import { CustomCursor } from "@/components/CustomCursor";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { Preloader } from "@/components/Preloader";
+import { ScrollProgressIndicator } from "@/components/ScrollProgressIndicator";
+import { Background3D } from "@/components/Background3D";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -48,6 +50,18 @@ export default function RootLayout({
         <div className="noise" />
         <Preloader />
         <CustomCursor />
+        <ScrollProgressIndicator 
+          position="top"
+          showPercentage={false}
+          height="3px"
+          colors={{
+            from: '#A97CF8',
+            via: '#F38CB8',
+            to: '#FDCC92'
+          }}
+          glowIntensity={20}
+        />
+        <Background3D />
         <SmoothScroll>
           {children}
         </SmoothScroll>

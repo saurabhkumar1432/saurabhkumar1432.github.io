@@ -5,6 +5,10 @@
   --foreground: #fafafa;
   --muted-foreground: #a1a1aa;
   --border: #1a1a1a;
+  --accent-primary: #3b82f6;
+  --accent-secondary: #8b5cf6;
+  --accent-accent: #06b6d4;
+  --gradient-accent: linear-gradient(135deg, #3b82f6, #8b5cf6);
 }
 
 html.lenis, html.lenis body {

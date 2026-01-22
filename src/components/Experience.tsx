@@ -5,6 +5,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import { Briefcase, Calendar, MapPin } from 'lucide-react';
+import { TextReveal } from '@/components/TextReveal';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -158,11 +159,12 @@ export function Experience() {
   return (
     <section ref={containerRef} className="py-20 relative overflow-hidden perspective-1000" id="experience">
        <div className="max-w-7xl mx-auto px-6 mb-20">
-        <h2 className="text-4xl md:text-5xl font-bold mb-4 text-center">
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
-            Professional Journey
-          </span>
-        </h2>
+        <TextReveal
+          text="Professional Journey"
+          className="text-4xl md:text-5xl font-bold mb-4 text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400"
+          duration={0.8}
+          stagger={0.1}
+        />
       </div>
 
       <div className="relative max-w-4xl mx-auto">

@@ -6,6 +6,9 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import { Code, Smartphone, Zap, Bot, Globe, ArrowRight } from 'lucide-react';
 import { ProjectModal } from '@/components/ProjectModal';
+import { MagneticElement } from '@/components/MagneticElement';
+import { TextReveal } from '@/components/TextReveal';
+import { SpotlitCard } from '@/components/SpotlitCard';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -80,43 +83,48 @@ export function ProjectGrid() {
   useGSAP(() => {
     const totalWidth = track.current!.scrollWidth;
     const windowWidth = window.innerWidth;
-    
-    // Only enable horizontal scroll on desktop
+
     if (windowWidth > 768) {
       gsap.to(track.current, {
-        x: () => -(totalWidth - windowWidth),
+        x: () => -(totalWidth - windowWidth + 100),
         ease: "none",
         scrollTrigger: {
           trigger: container.current,
           pin: true,
           scrub: 1,
-          end: () => `+=${totalWidth - windowWidth}`
+          end: () => `+=${totalWidth - windowWidth + 100}`,
+          invalidateOnRefresh: true,
         }
       });
     }
   }, { scope: container });
 
   return (
-    <section ref={container} className="relative min-h-screen bg-black overflow-hidden flex flex-col justify-center py-20" id="projects">
+    <section ref={container} className="relative min-h-screen bg-background overflow-hidden flex flex-col justify-center py-20" id="projects">
       {/* Background Title - z-0 to sit behind cards */}
       <div className="container mx-auto px-6 mb-12 md:absolute md:top-20 md:left-20 max-w-xl z-0 pointer-events-none select-none">
-        <h2 className="text-5xl md:text-8xl font-black mb-6 text-white/10 tracking-tighter">Selected <br /> Works</h2>
+        <TextReveal
+          text="Selected Works"
+          className="text-5xl md:text-8xl font-black mb-6 text-white/10 tracking-tighter"
+          duration={0.8}
+          stagger={0.12}
+          as="h2"
+        />
         <p className="text-white/40 text-lg max-w-sm ml-2 font-light">
           A showcase of technical depth and product craftsmanship. <span className="text-white">Scroll to explore.</span>
         </p>
       </div>
 
       {/* Cards Track - z-10 to sit on top of title */}
-      <div ref={track} className="flex flex-col md:flex-row gap-8 px-6 md:px-[40vw] w-full relative z-10">
+      <div ref={track} className="flex flex-col md:flex-row gap-8 px-6 md:px-[40vw] w-full relative z-10 will-change-transform">
         {projects.map((project, i) => (
-          <div
+          <SpotlitCard
             key={i}
             onClick={() => setActiveProject(project)}
-            className="group relative flex-shrink-0 w-full md:w-[600px] h-[400px] rounded-3xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-sm hover:border-white/20 transition-all project-card cursor-none md:cursor-pointer"
+            className="group relative flex-shrink-0 w-full md:w-[600px] h-[400px] project-card cursor-pointer"
+            gradient={project.color}
             data-cursor-text="View Case"
           >
-            <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-20 group-hover:opacity-40 transition-opacity duration-500`} />
-            
             <div className="absolute top-8 right-8 text-6xl font-black text-white/5 select-none">
               {project.id}
             </div>
@@ -129,7 +137,7 @@ export function ProjectGrid() {
                   </div>
                   <span className="text-sm font-medium tracking-wider uppercase text-white/60 border border-white/10 px-3 py-1 rounded-full">{project.category}</span>
                 </div>
-                
+
                 <h3 className="text-3xl md:text-4xl font-bold mb-4">{project.title}</h3>
                 <p className="text-muted-foreground text-lg leading-relaxed max-w-sm">
                   {project.description}
@@ -138,26 +146,33 @@ export function ProjectGrid() {
 
               <div className="flex items-center justify-between mt-8">
                  <div className="flex gap-2 flex-wrap">
-                  {project.tags.map(tag => (
-                    <span key={tag} className="text-xs font-semibold px-3 py-1 bg-white/5 rounded-full border border-white/5">
-                      {tag}
-                    </span>
-                  ))}
+                   {project.tags.map(tag => (
+                     <span key={tag} className="text-xs font-semibold px-3 py-1 bg-white/5 rounded-full border border-white/5">
+                       {tag}
+                     </span>
+                   ))}
                  </div>
 
-                 <button className="p-4 bg-white text-black rounded-full hover:scale-110 transition-transform">
+                 <MagneticElement
+                   strength={0.15}
+                   duration={0.25}
+                   returnEase="elastic.out(1, 0.6)"
+                   className="p-4 bg-white text-black rounded-full hover:scale-110 transition-transform pointer-events-auto"
+                   tagName="button"
+                   onClick={() => setActiveProject(project)}
+                 >
                    <ArrowRight className="w-5 h-5" />
-                 </button>
+                 </MagneticElement>
               </div>
             </div>
-          </div>
+          </SpotlitCard>
         ))}
       </div>
 
-      <ProjectModal 
-        project={activeProject} 
-        isOpen={!!activeProject} 
-        onClose={() => setActiveProject(null)} 
+      <ProjectModal
+        project={activeProject}
+        isOpen={!!activeProject}
+        onClose={() => setActiveProject(null)}
       />
     </section>
   );

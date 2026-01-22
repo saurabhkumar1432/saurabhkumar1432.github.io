@@ -77,7 +77,7 @@ export function Navbar() {
             <li key={link.name}>
               <a
                 href={link.href}
-                className="relative px-5 py-2 text-sm font-medium text-muted-foreground hover:text-white transition-colors rounded-full hover:bg-white/10"
+                className="nav-link relative px-5 py-2 text-sm font-medium text-muted-foreground hover:text-white transition-colors rounded-full hover:bg-white/10"
               >
                 {link.name}
               </a>

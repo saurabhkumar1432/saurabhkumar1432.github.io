@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react';
 import { X, ExternalLink, Github, Calendar, Tag } from 'lucide-react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
+import { MagneticElement } from '@/components/MagneticElement';
 
 interface Project {
   title: string;
@@ -168,21 +169,27 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                     <div className="modal-stagger space-y-4">
                         <h3 className="text-sm font-medium uppercase tracking-wider text-white/40">Links</h3>
                         <div className="flex gap-3">
-                            <a 
-                                href={project.github} 
+                            <MagneticElement
+                                href={project.github}
                                 target="_blank"
-                                className="flex-1 flex items-center justify-center gap-2 p-3 bg-white text-black rounded-xl font-semibold hover:bg-white/90 transition-colors"
+                                strength={0.25}
+                                duration={0.3}
+                                className="flex-1 flex items-center justify-center gap-2 p-3 bg-white text-black rounded-xl font-semibold hover:bg-white/90 transition-colors no-underline"
+                                tagName="a"
                             >
                                 <Github className="w-5 h-5" />
                                 View Code
-                            </a>
-                             <a 
-                                href="#" 
-                                className="flex-1 flex items-center justify-center gap-2 p-3 bg-white/10 text-white border border-white/10 rounded-xl font-semibold hover:bg-white/20 transition-colors"
+                            </MagneticElement>
+                             <MagneticElement
+                                href="#"
+                                strength={0.25}
+                                duration={0.3}
+                                className="flex-1 flex items-center justify-center gap-2 p-3 bg-white/10 text-white border border-white/10 rounded-xl font-semibold hover:bg-white/20 transition-colors no-underline"
+                                tagName="a"
                             >
                                 <ExternalLink className="w-5 h-5" />
                                 Live Demo
-                            </a>
+                            </MagneticElement>
                         </div>
                     </div>
 
